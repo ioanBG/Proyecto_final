@@ -34,6 +34,7 @@ public class Pedidos {
 			public void actionPerformed(ActionEvent arg0) {
 				Iniciar_pedido ventana1 = new Iniciar_pedido();
 				ventana1.frame.setVisible(true);
+				frame.dispose();
 			}});
 		btnNewButton.setBounds(74, 208, 159, 70);
 		frame.getContentPane().add(btnNewButton);
@@ -43,6 +44,7 @@ public class Pedidos {
 			public void actionPerformed(ActionEvent arg0) {
 				Actualizar_pedido ventana1 = new Actualizar_pedido();
 				ventana1.frame.setVisible(true);
+				frame.dispose();
 			}});
 		btnActualizarPedido.setBounds(340, 208, 159, 70);
 		frame.getContentPane().add(btnActualizarPedido);
@@ -52,6 +54,7 @@ public class Pedidos {
 			public void actionPerformed(ActionEvent arg0) {
 				Main ventana5 = new Main();
 				ventana5.frame.setVisible(true);
+				frame.dispose();
 			}});
 		button.setBounds(10, 11, 89, 23);
 		frame.getContentPane().add(button);
@@ -68,4 +71,3 @@ public class Pedidos {
 	}
 
 }
-

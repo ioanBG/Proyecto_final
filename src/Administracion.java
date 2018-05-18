@@ -124,6 +124,7 @@ public class Administracion {
 			public void actionPerformed(ActionEvent arg0) {
 				Main ventana4 = new Main();
 				ventana4.frame.setVisible(true);
+				frame.dispose();
 			}});
 		button.setBounds(10, 11, 89, 23);
 		frame.getContentPane().add(button);
@@ -149,7 +150,7 @@ public class Administracion {
 		textField_3.setColumns(10);
 		
 		JLabel lblIdproducto = new JLabel("ID_producto:");
-		lblIdproducto.setBounds(20, 505, 79, 14);
+		lblIdproducto.setBounds(10, 505, 73, 14);
 		frame.getContentPane().add(lblIdproducto);
 		
 		JLabel lblNombre = new JLabel("*Nombre:");

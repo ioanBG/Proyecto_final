@@ -6,13 +6,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
 import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Color;
+
+@SuppressWarnings("unused")
 
 public class Login {
 
@@ -68,7 +73,7 @@ public class Login {
 		frame.getContentPane().add(passwordField);
 		
 		JButton btnLogin = new JButton("LOGIN");
-		btnLogin.addActionListener(new ActionListener() {
+		btnLogin.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent arg0) {
 			String user = textField.getText();
 			@SuppressWarnings("deprecation")
@@ -77,6 +82,7 @@ public class Login {
 				if(pass.equals("12345")){
 					Main ventana = new Main();
 					ventana.frame.setVisible(true);
+					frame.dispose();
 				} else {
 					JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la contraseña");
 				}
@@ -86,7 +92,6 @@ public class Login {
 			}});
 		btnLogin.setBounds(304, 174, 89, 37);
 		frame.getContentPane().add(btnLogin);
-		
 		
 		JLabel lblElCochino = new JLabel("EL COCHINO");
 		lblElCochino.setFont(new Font("Serif", Font.ITALIC, 18));
@@ -99,4 +104,5 @@ public class Login {
 		panel.setBounds(0, 0, 434, 261);
 		frame.getContentPane().add(panel);
 		}
+
 	}

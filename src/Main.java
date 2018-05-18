@@ -39,6 +39,7 @@ public class Main {
 			public void actionPerformed(ActionEvent arg0) {
 				Administracion ventana1 = new Administracion();
 				ventana1.frame.setVisible(true);
+				frame.dispose();
 			}});
 		btnIr.setBounds(86, 252, 111, 54);
 		frame.getContentPane().add(btnIr);
@@ -48,6 +49,7 @@ public class Main {
 			public void actionPerformed(ActionEvent arg0) {
 				Pedidos ventana2 = new Pedidos();
 				ventana2.frame.setVisible(true);
+				frame.dispose();
 			}});
 		btnIr_1.setBounds(340, 252, 111, 54);
 		frame.getContentPane().add(btnIr_1);
@@ -67,6 +69,7 @@ public class Main {
 			public void actionPerformed(ActionEvent arg0) {
 				Login ventana3 = new Login();
 				ventana3.frame.setVisible(true);
+				frame.dispose();
 			}});
 		btnSalir.setBounds(10, 11, 89, 23);
 		frame.getContentPane().add(btnSalir);
@@ -77,4 +80,5 @@ public class Main {
 		frame.getContentPane().add(panel);
 	}
 }
+
 

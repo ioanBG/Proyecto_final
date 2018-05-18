@@ -96,6 +96,7 @@ public class Iniciar_pedido {
 			public void actionPerformed(ActionEvent arg0) {
 				Pedidos ventana6 = new Pedidos();
 				ventana6.frame.setVisible(true);
+				frame.dispose();
 			}
 		});
 		button.setBounds(10, 11, 89, 23);

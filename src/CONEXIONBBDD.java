@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -41,14 +42,14 @@ import javax.swing.table.TableModel;
 				e.printStackTrace();
 			}
 			
-		}
+		}	
 		
 		
 		public DefaultTableModel Productos() {
 			String [] columnas = {"ID_producto","Nombre","Precio","Caducidad"};
 			String [] registro = new String[5];
 			DefaultTableModel Productos = new DefaultTableModel(null,columnas);
-			String query = "SELECT id_producto, nombre, precio, caducidad FROM lorca.productos p, lorca.categoria c WHERE p.id_categoria = c.id_categoria";
+			String query = "SELECT id_producto, nombre, precio, caducidad FROM " + esquema + ".productos p, " + esquema + ".categoria c WHERE p.id_categoria = c.id_categoria";
 			try {
 				Statement stmt = conexion.createStatement();
 				ResultSet rset = stmt.executeQuery(query);
@@ -71,7 +72,7 @@ import javax.swing.table.TableModel;
 		
 		public void Aumentar(String id, String nombre, String precio, String caducidad, String categoria) {
 			if(id != "" && nombre != "" && precio != "" && caducidad != "" && categoria != "") {
-				String query = "INSERT INTO lorca.productos VALUES (" + id + ", '" + nombre + "', " + precio + ", '" + caducidad + "', " + categoria + ")";
+				String query = "INSERT INTO " + esquema + ".productos VALUES (" + id + ", '" + nombre + "', " + precio + ", '" + caducidad + "', " + categoria + ")";
 				try {
 					System.out.println(query);
 					Statement stmt = conexion.createStatement();
@@ -87,7 +88,7 @@ import javax.swing.table.TableModel;
 		
 		
 		public void Eliminar(String eliminar) {
-			String query = "DELETE FROM lorca.productos WHERE ID_producto = " + eliminar + "";
+			String query = "DELETE FROM " + esquema + ".productos WHERE ID_producto = " + eliminar + "";
 			try {
 				Statement stmt = conexion.createStatement();
 				stmt.executeUpdate(query);
@@ -101,7 +102,7 @@ import javax.swing.table.TableModel;
 		public void Modificar(String id, String nombre, String precio, String caducidad, String categoria) {
 			if(id != "") {
 				if(nombre != "") {
-					String query =  "UPDATE lorca.productos SET nombre = '" + nombre + "' WHERE ID_producto = " + id + "";
+					String query =  "UPDATE " + esquema + ".productos SET nombre = '" + nombre + "' WHERE ID_producto = " + id + "";
 					try {
 						Statement stmt = conexion.createStatement();
 						stmt.executeUpdate(query);
@@ -111,7 +112,7 @@ import javax.swing.table.TableModel;
 					}
 				}
 				if(precio != "") {
-					String query = "UPDATE lorca.productos SET precio = " + precio + " WHERE ID_producto = " + id + "";
+					String query = "UPDATE " + esquema + ".productos SET precio = " + precio + " WHERE ID_producto = " + id + "";
 					try {
 						Statement stmt = conexion.createStatement();
 						stmt.executeUpdate(query);
@@ -121,7 +122,7 @@ import javax.swing.table.TableModel;
 					}
 				}
 				if(caducidad != "") {
-					String query =  "UPDATE lorca.productos SET caducidad = '" + caducidad + "' WHERE ID_producto = " + id + "";
+					String query =  "UPDATE " + esquema + ".productos SET caducidad = '" + caducidad + "' WHERE ID_producto = " + id + "";
 					try {
 						Statement stmt = conexion.createStatement();
 						stmt.executeUpdate(query);
@@ -131,7 +132,7 @@ import javax.swing.table.TableModel;
 					}
 				}
 				if(categoria != "") {
-					String query = "UPDATE lorca.productos SET id_categoria = " + categoria + " WHERE ID_producto = " + id + "";
+					String query = "UPDATE " + esquema + ".productos SET id_categoria = " + categoria + " WHERE ID_producto = " + id + "";
 					try {
 						Statement stmt = conexion.createStatement();
 						stmt.executeUpdate(query);
@@ -146,7 +147,7 @@ import javax.swing.table.TableModel;
 		
 		public DefaultTableModel Agregar(String id, DefaultTableModel Agregar) {
 			String [] registro = new String[2];
-			String query = "SELECT id_producto, nombre FROM lorca.productos WHERE id_producto = " + id + "";
+			String query = "SELECT id_producto, nombre FROM " + esquema + ".productos WHERE id_producto = " + id + "";
 			if(id != "") {
 				try {
 					Statement stmt = conexion.createStatement();
@@ -173,7 +174,7 @@ import javax.swing.table.TableModel;
 			if(numero != "") {
 				for(int i = 0; i < tabla.getRowCount(); i++) {
 					String producto = tabla.getValueAt(i, 0).toString();
-					String query = "INSERT INTO lorca.pedidos VALUES (" + numero + ", " + producto + ")";
+					String query = "INSERT INTO " + esquema + ".pedidos VALUES (" + numero + ", " + producto + ")";
 					try {
 						System.out.println(query);
 						Statement stmt = conexion.createStatement();
@@ -191,7 +192,7 @@ import javax.swing.table.TableModel;
 		
 		public int Cobrar(String pedido) {
 			int total = 0;
-			String query = "SELECT SUM (precio) FROM lorca.productos p, lorca.pedidos e WHERE p.id_producto = e.id_producto AND e.id_pedido = " + pedido + "";
+			String query = "SELECT SUM (precio) FROM " + esquema + ".productos p, " + esquema + ".pedidos e WHERE p.id_producto = e.id_producto AND e.id_pedido = " + pedido + "";
 			try {
 				System.out.println(query);
 				Statement stmt = conexion.createStatement();
@@ -233,7 +234,7 @@ import javax.swing.table.TableModel;
 			String [] columnas = {"ID_producto, Nombre"};
 			String [] registro = new String[2];
 			DefaultTableModel Ok = new DefaultTableModel(null,columnas);
-			String query = "SELECT id_producto, nombre FROM lorca.productos p, lorca.pedidos e WHERE e.id_pedido = " + texto + "";
+			String query = "SELECT id_producto, nombre FROM " + esquema + ".productos p, " + esquema + ".pedidos e WHERE e.id_pedido = " + texto + "";
 			try {
 				Statement stmt = conexion.createStatement();
 				ResultSet rset = stmt.executeQuery(query);

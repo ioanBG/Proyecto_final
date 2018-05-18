@@ -60,13 +60,14 @@ public class Actualizar_pedido {
 			public void actionPerformed(ActionEvent e) {
 				Pedidos ventana7 = new Pedidos();
 				ventana7.frame.setVisible(true);
+				frame.dispose();
 			}
 		});
 		btnAtras.setBounds(10, 11, 89, 23);
 		frame.getContentPane().add(btnAtras);
 		
 		JLabel lblInserteNumeroDe = new JLabel("INSERTE NUMERO DE PEDIDO:");
-		lblInserteNumeroDe.setBounds(57, 425, 154, 14);
+		lblInserteNumeroDe.setBounds(35, 425, 182, 14);
 		frame.getContentPane().add(lblInserteNumeroDe);
 		
 		textField = new JTextField();
@@ -80,6 +81,7 @@ public class Actualizar_pedido {
 				String texto = textField.getText();
 				Iniciar_pedido ventana8 = new Iniciar_pedido();
 				ventana8.frame.setVisible(true);
+				frame.dispose();
 				table.setModel(Prueba.Ok(texto));
 			}
 		});
