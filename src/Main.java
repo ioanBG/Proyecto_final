@@ -6,35 +6,32 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import java.awt.Color;
 
+@SuppressWarnings("unused")
 public class Main {
 
 	public JFrame frame;
 
-	/**
-	 * Create the application.
-	 */
 	public Main() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 580, 448);
+		frame.setBounds(100, 100, 557, 372);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblAdministracin = new JLabel("ADMINISTRACI\u00D3N");
 		lblAdministracin.setFont(new Font("Book Antiqua", Font.PLAIN, 20));
-		lblAdministracin.setBounds(49, 291, 200, 14);
+		lblAdministracin.setBounds(47, 215, 200, 14);
 		frame.getContentPane().add(lblAdministracin);
 		
 		JLabel lblPedidos = new JLabel("PEDIDOS");
 		lblPedidos.setFont(new Font("Book Antiqua", Font.PLAIN, 20));
-		lblPedidos.setBounds(383, 291, 101, 14);
+		lblPedidos.setBounds(350, 215, 101, 14);
 		frame.getContentPane().add(lblPedidos);
 		
 		JButton btnIr = new JButton("IR");
@@ -43,7 +40,7 @@ public class Main {
 				Administracion ventana1 = new Administracion();
 				ventana1.frame.setVisible(true);
 			}});
-		btnIr.setBounds(86, 316, 111, 54);
+		btnIr.setBounds(86, 252, 111, 54);
 		frame.getContentPane().add(btnIr);
 		
 		JButton btnIr_1 = new JButton("IR");
@@ -52,17 +49,17 @@ public class Main {
 				Pedidos ventana2 = new Pedidos();
 				ventana2.frame.setVisible(true);
 			}});
-		btnIr_1.setBounds(373, 316, 111, 54);
+		btnIr_1.setBounds(340, 252, 111, 54);
 		frame.getContentPane().add(btnIr_1);
 		
 		JLabel lblRestaurante = new JLabel("RESTAURANTE");
-		lblRestaurante.setFont(new Font("Lucida Console", Font.ITALIC, 30));
-		lblRestaurante.setBounds(174, 23, 210, 67);
+		lblRestaurante.setFont(new Font("Sitka Small", Font.BOLD, 20));
+		lblRestaurante.setBounds(182, 24, 171, 54);
 		frame.getContentPane().add(lblRestaurante);
 		
 		JLabel lblElCochino = new JLabel("EL COCHINO");
 		lblElCochino.setFont(new Font("Serif", Font.ITALIC, 38));
-		lblElCochino.setBounds(166, 101, 234, 86);
+		lblElCochino.setBounds(151, 71, 234, 86);
 		frame.getContentPane().add(lblElCochino);
 		
 		JButton btnSalir = new JButton("SALIR");
@@ -73,5 +70,11 @@ public class Main {
 			}});
 		btnSalir.setBounds(10, 11, 89, 23);
 		frame.getContentPane().add(btnSalir);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(153, 102, 0));
+		panel.setBounds(0, 0, 541, 333);
+		frame.getContentPane().add(panel);
 	}
 }
+

@@ -1,3 +1,4 @@
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,65 +11,88 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
+import javax.swing.JPanel;
+import java.awt.Color;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
+@SuppressWarnings("unused")
 public class Administracion {
 
 	public JFrame frame;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
+	CONEXIONBBDD Prueba = new CONEXIONBBDD();
+	public JTextField textField;
+	public JTextField textField_1;
+	public JTextField textField_2;
+	public JTextField textField_3;
+	public JLabel comboBox;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Administracion window = new Administracion();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public Administracion() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 792, 643);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
+		
+		comboBox.setBounds(506, 530, 46, 20);
+		frame.getContentPane().add(comboBox);
+		
 		JLabel lblAdministracion = new JLabel("ADMINISTRACION");
-		lblAdministracion.setFont(new Font("Century", Font.ITALIC, 30));
+		lblAdministracion.setFont(new Font("Sitka Small", Font.BOLD, 30));
 		lblAdministracion.setBounds(238, 21, 297, 36);
 		frame.getContentPane().add(lblAdministracion);
 		
 		JButton btnNewButton = new JButton("A\u00D1ADIR");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String id = textField.getText();
+				String nombre = textField_1.getText();
+				String precio = textField_2.getText();
+				String caducidad = textField_3.getText();
+				String categoria = (String) comboBox.getSelectedItem();
+				Prueba.Aumentar(id, nombre, precio, caducidad, categoria);
+				table.setModel(Prueba.Productos());
+			}
+		});
 		btnNewButton.setBounds(61, 421, 133, 53);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnModificar = new JButton("MODIFICAR");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String id = textField.getText();
+				String nombre = textField_1.getText();
+				String precio = textField_2.getText();
+				String caducidad = textField_3.getText();
+				String categoria = (String) comboBox.getSelectedItem();
+				Prueba.Modificar(id, nombre, precio, caducidad, categoria);
+				table.setModel(Prueba.Productos());
+			}
+		});
 		btnModificar.setBounds(306, 421, 133, 53);
 		frame.getContentPane().add(btnModificar);
 		
 		JButton btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String eliminar = textField.getText();
+				Prueba.Eliminar(eliminar);
+				table.setModel(Prueba.Productos());
+			}
+		});
 		btnEliminar.setBounds(541, 421, 133, 53);
 		frame.getContentPane().add(btnEliminar);
 		
 		JLabel lblElCochino = new JLabel("EL COCHINO");
-		lblElCochino.setFont(new Font("Calibri", Font.ITALIC, 30));
+		lblElCochino.setFont(new Font("Serif", Font.ITALIC, 26));
 		lblElCochino.setBounds(602, 556, 164, 37);
 		frame.getContentPane().add(lblElCochino);
 		
@@ -79,21 +103,6 @@ public class Administracion {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
 			},
 			new String[] {
 				"ID_producto", "Nombre", "Precio", "Caducidad"
@@ -101,30 +110,9 @@ public class Administracion {
 		));
 		scrollPane.setViewportView(table);
 		
-		JLabel lblColumna = new JLabel("COLUMNA:");
-		lblColumna.setFont(new Font("Cambria", Font.PLAIN, 16));
-		lblColumna.setBounds(192, 500, 82, 14);
-		frame.getContentPane().add(lblColumna);
-		
-		JLabel lblElemento = new JLabel("ELEMENTO:");
-		lblElemento.setFont(new Font("Cambria", Font.PLAIN, 16));
-		lblElemento.setBounds(192, 544, 96, 14);
-		frame.getContentPane().add(lblElemento);
-		
-		textField = new JTextField();
-		textField.setBounds(306, 499, 168, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(306, 543, 168, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-		
 		JButton btnListar = new JButton("LISTAR");
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CONEXIONBBDD Prueba = new CONEXIONBBDD();
 				table.setModel(Prueba.Productos());
 			}
 		});
@@ -139,5 +127,54 @@ public class Administracion {
 			}});
 		button.setBounds(10, 11, 89, 23);
 		frame.getContentPane().add(button);
+		
+		textField = new JTextField();
+		textField.setBounds(93, 502, 105, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(93, 541, 105, 20);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(318, 502, 105, 20);
+		frame.getContentPane().add(textField_2);
+		textField_2.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(318, 541, 105, 20);
+		frame.getContentPane().add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblIdproducto = new JLabel("ID_producto:");
+		lblIdproducto.setBounds(20, 505, 79, 14);
+		frame.getContentPane().add(lblIdproducto);
+		
+		JLabel lblNombre = new JLabel("*Nombre:");
+		lblNombre.setBounds(20, 544, 56, 14);
+		frame.getContentPane().add(lblNombre);
+		
+		JLabel lblPrecio = new JLabel("*Precio:");
+		lblPrecio.setBounds(262, 505, 46, 14);
+		frame.getContentPane().add(lblPrecio);
+		
+		JLabel lblCaducidad = new JLabel("*Caducidad:");
+		lblCaducidad.setBounds(238, 543, 75, 17);
+		frame.getContentPane().add(lblCaducidad);
+		
+		JLabel lblOpcional = new JLabel("*opcional");
+		lblOpcional.setBounds(639, 505, 65, 14);
+		frame.getContentPane().add(lblOpcional);
+		
+		JLabel lblCategoria = new JLabel("*Categoria:");
+		lblCategoria.setBounds(496, 505, 65, 14);
+		frame.getContentPane().add(lblCategoria);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(153, 102, 0));
+		panel.setBounds(0, 0, 776, 604);
+		frame.getContentPane().add(panel);
 	}
 }

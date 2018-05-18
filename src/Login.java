@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import java.awt.Color;
 
 public class Login {
 
@@ -18,9 +20,6 @@ public class Login {
 	private JTextField textField;
 	private JPasswordField passwordField;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -34,16 +33,10 @@ public class Login {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public Login() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
@@ -78,6 +71,7 @@ public class Login {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			String user = textField.getText();
+			@SuppressWarnings("deprecation")
 			String pass = String.valueOf(passwordField.getText());
 			if(user != "" && pass != "") {
 				if(pass.equals("12345")){
@@ -98,5 +92,11 @@ public class Login {
 		lblElCochino.setFont(new Font("Serif", Font.ITALIC, 18));
 		lblElCochino.setBounds(153, 48, 114, 26);
 		frame.getContentPane().add(lblElCochino);
+		
+		JPanel panel = new JPanel();
+		panel.setForeground(new Color(0, 0, 0));
+		panel.setBackground(new Color(153, 102, 0));
+		panel.setBounds(0, 0, 434, 261);
+		frame.getContentPane().add(panel);
 		}
 	}

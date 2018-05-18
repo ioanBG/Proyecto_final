@@ -6,46 +6,27 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import java.awt.Color;
 
+@SuppressWarnings("unused")
 public class Pedidos {
 
 	public JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Pedidos window = new Pedidos();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public Pedidos() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 556, 374);
+		frame.setBounds(100, 100, 579, 375);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblPedidos = new JLabel("PEDIDOS");
-		lblPedidos.setFont(new Font("Calibri", Font.ITALIC, 36));
-		lblPedidos.setBounds(214, 30, 141, 58);
+		lblPedidos.setFont(new Font("Sitka Small", Font.BOLD, 36));
+		lblPedidos.setBounds(191, 30, 189, 58);
 		frame.getContentPane().add(lblPedidos);
 		
 		JButton btnNewButton = new JButton("INICIAR PEDIDO");
@@ -76,9 +57,15 @@ public class Pedidos {
 		frame.getContentPane().add(button);
 		
 		JLabel lblElCochino = new JLabel("EL COCHINO");
-		lblElCochino.setFont(new Font("Cambria", Font.ITALIC, 24));
-		lblElCochino.setBounds(214, 99, 133, 46);
+		lblElCochino.setFont(new Font("Serif", Font.ITALIC, 24));
+		lblElCochino.setBounds(201, 99, 159, 46);
 		frame.getContentPane().add(lblElCochino);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(153, 102, 0));
+		panel.setBounds(0, 0, 563, 336);
+		frame.getContentPane().add(panel);
 	}
 
 }
+
